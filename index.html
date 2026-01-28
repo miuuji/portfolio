@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bianca — Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #fafafa;
+      padding: 70px;
+      color: #555;
+    }
+
+    /* GRID LAYOUT — MATCHES REFERENCE IMAGE */
+    .grid {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .column {
+      display: grid;
+      gap: 50px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #eee;
+      padding: 30px;
+      transition: transform 0.35s, box-shadow 0.35s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.05);
+    }
+
+    /* TEXT STYLES */
+    .title {
+      font-size: 13px;
+      letter-spacing: 4px;
+      margin-bottom: 12px;
+    }
+
+    .desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #777;
+    }
+
+    .links span {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-top: 10px;
+    }
+
+    /* DATE CARD */
+    .date {
+      font-size: 44px;
+      font-weight: 300;
+      color: #e5b3c0;
+    }
+
+    .day {
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    img {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .pink-box {
+      background: #f6e4ea;
+      height: 240px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #aaa;
+      margin-top: 12px;
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 520px;
+      width: 90%;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .modal-content img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    .close {
+      margin-top: 25px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #e5b3c0;
+      cursor: pointer;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        padding: 40px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="column">
+
+      <!-- ABOUT CARD -->
+      <div class="card" data-modal="about">
+        <div class="title">关于我 | ABOUT ME</div>
+        <p class="desc">Just a girl building herself one skill at a time, tap here for the lore ✿</p>
+        <div class="links">
+          <span>READ MORE</span>
+          <img src="https://i.pinimg.com/736x/7d/15/56/7d15561736e35a6f2f9c1fbd846a0dbe.jpg" alt="">
+        </div>
+      </div>
+
+      <!-- PINK COLOR CARD -->
+      <div class="card" data-modal="project2">
+        <div class="date">02</div>
+        <div class="day">PROJECT<br>DESIGN</div>
+        <div class="pink-box"></div>
+        <div class="tag">PASTEL · UI</div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="column">
+
+      <!-- IMAGE PROJECT -->
+      <div class="card" data-modal="project1">
+        <div class="date">01</div>
+        <div class="day">PROJECT<br>WEBSITE</div>
+        <img src="https://i.pinimg.com/1200x/b6/27/b4/b627b445b9459014eccb2e4e3436e7b0.jpg" />
+        <div class="tag">HTML · CSS</div>
+      </div>
+
+      <!-- CONTACT CARD -->
+      <div class="card" data-modal="contact">
+        <div class="date">03</div>
+        <div class="day">CONTACT<br>ME</div>
+        <p class="desc">Interested in working with me? Open here for collaborations! </p>
+        <div class="tag">EMAIL · SOCIALS</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ABOUT MODAL (WITH IMAGE) -->
+  <div class="modal" id="about">
+    <div class="modal-content">
+      <img src="https://i.pinimg.com/736x/0c/07/94/0c07946f476d82df03215fca237c73bf.jpg" alt="profile">
+      <p>嗨! I'm Bianca Maegan. A Singaporean student who revolves her life in learning just about anything there is to learn!
+        My biggest interests are graphic design, music, baking, writing, and reading ♡︎
+        
+
+      </p>
+      <div class="close">CLOSE</div>
+    </div>
+  </div>
+
+  <!-- PROJECT MODALS -->
+  <div class="modal" id="project1">
+    <div class="modal-content">
+      <p>A responsive website built using pure HTML and CSS with a focus on clean structure.</p>
+      <div class="close">CLOSE</div>
+    </div>
+  </div>
+
+  <div class="modal" id="project2">
+    <div class="modal-content">
+      <p>A pastel UI concept inspired by editorial layouts and minimal design systems.</p>
+      <div class="close">CLOSE</div>
+    </div>
+  </div>
+
+  <div class="modal" id="contact">
+    <div class="modal-content">
+      <p>Email: or30bianca@email.com<br>Instagram: @miuuji_</p>
+      <div class="close">CLOSE</div>
+    </div>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const modals = document.querySelectorAll('.modal');
+    const closes = document.querySelectorAll('.close');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        document.getElementById(card.dataset.modal).classList.add('active');
+      });
+    });
+
+    closes.forEach(btn => {
+      btn.addEventListener('click', () => {
+        modals.forEach(m => m.classList.remove('active'));
+      });
+    });
+  </script>
+
+</body>
+</html>
+
